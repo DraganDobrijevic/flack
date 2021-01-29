@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.min.js"></script>
+        <script id="result" type="text/x-handlebars-template">
+            {% raw -%}
+                <li><a href="#" onclick="return false;" class="channel-link" data-page="{{ value }}">{{ value }}</a></li>
+            {%- endraw %}   
+        </script>
+        <script id="result2" type="text/x-handlebars-template">
+            {% raw -%}
+                <div class="post">
+                    <p class="msg">{{ value1 }}</p>
+                    <span class="timestamp">{{ value2 }}</span>
+                    <span class="name">.... {{ value3 }}</span>
+                    <button class="hide-btn">Hide</button>
+                </div>
+            {%- endraw %}   
+        </script>
+        <script src="{{ url_for('static', filename='index.js') }}"></script>
+        <title>Flack</title>
+    </head>
+    <body>
+        <section id="background">
+            <form id="form">
+                <input id="name" autocomplete="off" autofocus placeholder="Name" type="text">
+                <button class="btn" type="submit">Add</button>
+            </form>
+            <div id="hello-name">
+                Hello <span id="display-name"></span>!
+            </div>
+            <div id="channels">
+                <form>
+                    <input type="text" placeholder="Enter the channel name" autocomplete="off" id="new-channel-name">
+                    <button id="new-channel">Create</button>
+                </form>
+                <h5>All Channels:</h5>
+                <ul id="rooms" class="scrollS5">
+
+                </ul>      
+            </div>
+            <div id="message" class="scrollbar scrollS5">
+
+            </div>
+            <form id="new-message">
+                <input id="new-msg" type="text" autocomplete="off">
+                <button class="send" type="submit">Send</button>
+            </form>
+        </section>
+    </body>
+</html>
